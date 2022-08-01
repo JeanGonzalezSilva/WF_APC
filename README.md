@@ -14,6 +14,9 @@ The controller is written in MATLAB using the ZeroMQ interface. An example case 
 Details on how to install and use SOWFA can be found in https://www.nrel.gov/wind/nwtc/sowfa.html. The adopted work is based on the SOWFA version in
 https://github.com/TUDelft-DataDrivenControl/SOWFA which includes the ZeroMQ supercontroller.
 
+## Content
+This repository provides an example case including the simulation files for the precursor and the wind farm simulation. The precursor is used to generate the turbulent inflow field using the windPlantSolver. In the wind farm simulation, the user can activate or deactivate the controller options which provide the centralized power losses compensator, the thrust force balancer and the user-defined thrust contrained turbine.
+
 ## Referencing
 If this controller played a role in your research, please cite:
 J. G. Silva, B. Doekemeijer, R. Ferrari and J. -W. van Wingerden, "Active Power Control of Waked Wind Farms: Compensation of Turbine Saturation and Thrust Force Balance," 2021 European Control Conference (ECC), 2021, pp. 1223-1228, doi: 10.23919/ECC54610.2021.9655154.
