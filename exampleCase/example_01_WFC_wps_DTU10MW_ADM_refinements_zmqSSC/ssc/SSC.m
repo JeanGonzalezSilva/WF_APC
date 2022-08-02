@@ -44,6 +44,8 @@ varThrustArray=[];
 % Initialization of the effective wind speed estimator 
 gamma = 5.0;
 beta= 0.0;
+%gamma=40.0;
+%beta=10.0
 windSpeedInitial=11*ones(nTurbs,1);
 rotSpeedInitial = 1.0*ones(nTurbs,1);
 % Loop initialization
@@ -67,7 +69,7 @@ sumNonSatut=0;
 varThrust=zeros(1,nTurbs);
 
 %Individual Thrust Tracking
-applyIndThrustTrackingControl=true;
+applyIndThrustTrackingControl=false;
 indtrackingThrustVarInt=0;
 indThrustReference=500000; %N
 indPidThrustGainKI=1.444;
@@ -143,8 +145,8 @@ while 1
     if firstRun
         % Initialize a wind speed estimator for each turbine
         for ii = 1:nTurbs
-            %WSE{ii} = wsEstimatorObj('dtu10mw',dt,gamma,rotSpeedInitial(ii),windSpeedInitial(ii));
-			WSE{ii} = wsEstimatorImprovedIandI('dtu10mw',dt,gamma,beta,rotSpeedInitial(ii),windSpeedInitial(ii));
+            WSE{ii} = wsEstimatorObj('dtu10mw',dt,gamma,rotSpeedInitial(ii),windSpeedInitial(ii));
+			%WSE{ii} = wsEstimatorImprovedIandI('dtu10mw',dt,gamma,beta,rotSpeedInitial(ii),windSpeedInitial(ii));
         end
         firstRun = false;
     end
@@ -153,7 +155,7 @@ while 1
     for ii = 1:nTurbs
         WSE{ii}.update(genTorqueArray(ii), rotorSpeedArray(ii), bladePitchArray(ii));
         disp(['WS of Turbine[' num2str(ii) '] = ' num2str(WSE{ii}.windSpeed) ' m/s.'])
-        powerAvailableTurb(ii)= (0.5 * 1.225 * pi * 63.2^2)*(WSE{ii}.windSpeed^3); % Obtain available power
+        powerAvailableTurb(ii)= (0.5 * fluidDensity * pi * Rr^2)*(WSE{ii}.windSpeed^3); 
 		tsRatio=rotorSpeedArray(ii)*Rr/WSE{ii}.windSpeed;
 		estimatedThrust(ii)=(0.5 * fluidDensity * pi * Rr^2)*(WSE{ii}.windSpeed^2)*WSE{ii}.turbineProperties.ctFun(tsRatio,bladePitchArray(ii));
     end
