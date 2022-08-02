@@ -1,0 +1,770 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+ 
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict.local.1;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+ 
+globalProperties
+{
+    outputControl       "timeStep";
+    outputInterval       1;
+}
+ 
+// _SSC_
+sscProperties
+{
+    sscEnabled          true; //Enable or disable SSC. If sscProperties{} not present, defaults to false
+    nInputsToSSC        8; // Measurements: [genPower,rotSpeedF,azimuth,rotThrust,rotTorque,genTorque,nacYaw,bladePitch]
+    nOutputsFromSSC     3; // Control variables: [genTorque, nacYaw, bladePitch]
+    sscControllerType   "zeromqSSC"; // The type of SSC
+    sscMeasurementsFunction "default"; // Measurements function
+    zmqAddress          "tcp://localhost:1622"; // zeroMQ connection port
+}
+ 
+turbine0
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4822.7 971.1 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine1
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4327.7 1828.4 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine2
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3832.7 2685.8 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine3
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3337.7 3543.2 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine4
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (2842.7 4400.5 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine5
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (2347.7 5257.9 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine6
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (1852.7 6115.3 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine7
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (1357.7 6972.6 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine8
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5927.6 1037.4 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine9
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5432.6 1894.7 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine10
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4937.6 2752.1 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine11
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4442.6 3609.5 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine12
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3947.6 4466.8 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine13
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3452.6 5324.2 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine14
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (2957.6 6181.6 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine15
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (2462.6 7038.9 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine16
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (6537.4 1961.1 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine17
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (6042.4 2818.4 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine18
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5547.4 3675.8 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine19
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5052.4 4533.2 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine20
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4557.4 5390.5 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine21
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4062.4 6247.9 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine22
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3567.4 7105.3 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine23
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (3072.4 7962.6 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine24
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (7642.3 2027.4 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine25
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (7147.3 2884.7 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine26
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (6652.3 3742.1 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine27
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (6157.3 4599.5 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine28
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5662.3 5456.8 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine29
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (5167.3 6314.2 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine30
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4672.3 7171.6 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
+turbine31
+{
+    turbineType                      "DTU10MWRef";
+    baseLocation                     (4177.3 8028.9 0.0);
+    nRadial                           40;
+    azimuthMaxDis                     2.0;
+    nAvgSector                        1;
+    pointDistType                    "uniform";
+    pointInterpType                  "linear";
+	bladeUpdateType                  "oldPosition";
+	epsilon                          20.0;
+	forceScalar                      1.0;
+	inflowVelocityScalar             0.94;
+    tipRootLossCorrType              "Glauert";
+    rotationDir                      "cw";
+    Azimuth                           0.0;;
+    RotSpeed                          7.5;
+    TorqueGen                         75000.0;
+    Pitch                             0.0;
+    NacYaw                          240.0;
+    fluidDensity                      1.225;
+}
+ 
