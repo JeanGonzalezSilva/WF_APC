@@ -32,6 +32,7 @@ In the wind farm simulation example, the user can activate or deactivate the con
 
 ## Referencing
 If this controller played a role in your research, please cite either of the following articles:
+
 J. G. Silva, B. Doekemeijer, R. Ferrari and J. -W. van Wingerden, "Active Power Control of Waked Wind Farms: Compensation of Turbine Saturation and Thrust Force Balance," 2021 European Control Conference (ECC), 2021, pp. 1223-1228, doi: 10.23919/ECC54610.2021.9655154.
 
 J. G. Silva, D. van der Hoek, S.P. Mulders, R. Ferrari and J. -W. van Wingerden, "A Switching Thrust Tracking Controller for Load Constrained Wind Turbines," 2022 American Control Conference (ACC), 2022.
