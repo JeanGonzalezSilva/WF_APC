@@ -1,0 +1,19 @@
+    probe1
+    {
+          type                probes;
+          functionObjectLibs ("libsampling.so");
+          name                probe1;
+          outputControl       timeStep;
+          outputInterval      1;
+          fields
+          (
+              U
+          );
+          
+          probeLocations
+          (
+				(1000.001 1000.001 119.001)
+			    (4000.001 4000.001 119.001)
+				(7000.001 7000.001 119.001)
+          );
+    }
