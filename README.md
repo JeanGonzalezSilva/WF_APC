@@ -28,7 +28,12 @@ Now, the contents from 'SOWFA\tools\boundaryDataConversion' should be copied to 
 ```
 reconstructPar -time 20000 -fields '(k kappat nuSgs p_rgh qwall Rwall T U)'
 ```
-In the wind farm simulation example, the user can activate or deactivate the controller options in the 'ssc\SSC.m', which contains the wind farm controller including the centralized power losses compensator, the thrust force balancer and the user-defined thrust contrained turbine. The look up tables for the down-regulation is located in the 'ssc\controlTables' folder and the implemented wind speed estimator based on the improved I&I tecnique (https://research.tudelft.nl/en/publications/the-immersion-and-invariance-wind-speed-estimator-revisited-and-n) is in the 'windSpeedEstimator' folder.
+
+For the wind farm simulation example, 'exampleCase\example_01_TotalControl_9x9x1km_lowTI_10mps' folder is given. Update the precursorDir to the directory of your precursor case in the file 'runscript.preprocess'. This directory should contain the folder 'drivingData' (containing the sources file and the boundaryData folder) and the folder '20000' (containing your initial conditions). 
+
+The user can activate or deactivate the controller options in the 'ssc\SSC.m', which contains the wind farm controller including the centralized power losses compensator, the thrust force balancer and the user-defined thrust contrained turbine. The look up tables for the down-regulation is located in the 'ssc\controlTables' folder; and the implemented wind speed estimator based on the improved I&I tecnique (https://research.tudelft.nl/en/publications/the-immersion-and-invariance-wind-speed-estimator-revisited-and-n) is in the 'windSpeedEstimator' folder. 
+
+To run the wind farm simulation example, run 'runscript.preprocess' and finally submit the 'runscript.solve' in the cluster.
 
 ## Referencing
 If this controller played a role in your research, please cite either of the following articles:
