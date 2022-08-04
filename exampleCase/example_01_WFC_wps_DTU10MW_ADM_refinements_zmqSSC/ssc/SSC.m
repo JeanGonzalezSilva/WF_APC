@@ -69,7 +69,7 @@ sumNonSatut=0;
 varThrust=zeros(1,nTurbs);
 
 %Individual Thrust Tracking
-applyIndThrustTrackingControl=true;
+applyIndThrustTrackingControl=false;
 indtrackingThrustVarInt=0;
 indThrustReference=500000; %N
 indPidThrustGainKI=1.444;
