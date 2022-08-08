@@ -32,6 +32,7 @@ estimatedThrustArray = [];
 estimatedWindSpeedArray = [];
 powerSetpointTurbArray = [];
 powerAvailableTurbArray = [];
+powerSetpointTurbArrayLC=[];
 powerSetpointTurbArrayNC = [];
 powerSetpointTurbArrayNTC = [];
 up = [];
@@ -42,10 +43,8 @@ indtrackingThrustVarIntArray=[];
 varThrustArray=[];
 
 % Initialization of the effective wind speed estimator 
-gamma = 5.0;
-beta= 0.0;
-%gamma=40.0;
-%beta=10.0
+gamma = 40.0;
+beta= 10.0;
 windSpeedInitial=11*ones(nTurbs,1);
 rotSpeedInitial = 1.0*ones(nTurbs,1);
 % Loop initialization
@@ -69,12 +68,13 @@ sumNonSatut=0;
 varThrust=zeros(1,nTurbs);
 
 %Individual Thrust Tracking
-applyIndThrustTrackingControl=false;
 indtrackingThrustVarInt=0;
 indThrustReference=500000; %N
 indPidThrustGainKI=1.444;
+powerSetpointVariationIndThrustControl=zeros(1,nTurbs);
 indPidThrustGainKP=0;
 indTurbine=18; %Turbine number
+thrustScale=0.944;
 
 
 %DTU 10MW parameters
@@ -145,8 +145,8 @@ while 1
     if firstRun
         % Initialize a wind speed estimator for each turbine
         for ii = 1:nTurbs
-            WSE{ii} = wsEstimatorObj('dtu10mw',dt,gamma,rotSpeedInitial(ii),windSpeedInitial(ii));
-			%WSE{ii} = wsEstimatorImprovedIandI('dtu10mw',dt,gamma,beta,rotSpeedInitial(ii),windSpeedInitial(ii));
+            %WSE{ii} = wsEstimatorObj('dtu10mw',dt,gamma,rotSpeedInitial(ii),windSpeedInitial(ii));
+			WSE{ii} = wsEstimatorImprovedIandI('dtu10mw',dt,gamma,beta,rotSpeedInitial(ii),windSpeedInitial(ii));
         end
         firstRun = false;
     end
@@ -157,7 +157,7 @@ while 1
         disp(['WS of Turbine[' num2str(ii) '] = ' num2str(WSE{ii}.windSpeed) ' m/s.'])
         powerAvailableTurb(ii)= (0.5 * fluidDensity * pi * Rr^2)*(WSE{ii}.windSpeed^3); 
 		tsRatio=rotorSpeedArray(ii)*Rr/WSE{ii}.windSpeed;
-		estimatedThrust(ii)=(0.5 * fluidDensity * pi * Rr^2)*(WSE{ii}.windSpeed^2)*WSE{ii}.turbineProperties.ctFun(tsRatio,bladePitchArray(ii));
+		estimatedThrust(ii)=(0.5 * fluidDensity * pi * Rr^2)*(WSE{ii}.windSpeed^2)*WSE{ii}.turbineProperties.ctFun(tsRatio,bladePitchArray(ii))*thrustScale;
     end
     powerAvailableTurb=min(powerAvailableTurb,powerRated);
   
@@ -173,15 +173,16 @@ while 1
 	if applyIndThrustTrackingControl && currentTime>20100 && ((estimatedThrust(ii)>indThrustReference) || (indtrackingThrustVarInt<0))
 				varThrust(ii)=indThrustReference-estimatedThrust(ii);
                 indtrackingThrustVarInt = indtrackingThrustVarInt + dt * varThrust(ii);
-                powerSetpointVariationThrustControl(ii)=indPidThrustGainKP*varThrust(ii)+indPidThrustGainKI*indtrackingThrustVarInt;            
+                powerSetpointVariationIndThrustControl(ii)=indPidThrustGainKP*varThrust(ii)+indPidThrustGainKI*indtrackingThrustVarInt;            
 				turbIsGreedy(ii)=true;
 				disp(['Turbine is constrained.'])
 	else
 	varThrust(ii)=0;
-	indtrackingThrustVarInt=0;
-	powerSetpointVariationThrustControl(ii)=0;
+	indtrackingThrustVarInt=0; % Reset
+	powerSetpointVariationIndThrustControl(ii)=0;
     end
-	powerSetpointTurbCurrent(ii) = powerSetpointTurbCurrent(ii) + powerSetpointVariationThrustControl(ii);
+	powerSetpointTurbCurrent(ii) = powerSetpointTurbCurrent(ii) + powerSetpointVariationIndThrustControl(ii);
+	powerSetpointTurbLC=powerSetpointTurbCurrent;
 	
 	 % Apply wind farm power controller
     if applyFarmPowerControl
@@ -379,7 +380,7 @@ while 1
         %%{
         applyRateLimiterPitch = true;
         if applyRateLimiterPitch
-            pitchRateLimit = 10.0 * dt;
+            pitchRateLimit = 2.5 * dt;
             deltaPitch = pitchAngleArrayOut(ii) - bladePitchArray(ii);
             deltaPitch = max(min(deltaPitch,pitchRateLimit),-pitchRateLimit);
             pitchAngleArrayOut(ii) = bladePitchArray(ii) + deltaPitch;
@@ -407,6 +408,7 @@ while 1
     ut = [ut; powerSetpointVariationThrustControl];
     powerSetpointTurbArrayNTC = [powerSetpointTurbArrayNTC; powerSetpointTurbNTC];
     sumNonSatutArray=[sumNonSatutArray;sumNonSatut];
+	powerSetpointTurbArrayLC=[powerSetpointTurbArrayLC; powerSetpointTurbLC];
 	
 	if ~rem(currentTime,10)
         save('workspace.mat')
