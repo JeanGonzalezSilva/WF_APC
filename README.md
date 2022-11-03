@@ -6,8 +6,8 @@ Author: J G Silva, D van der Hoek, B M Doekemeijer, R Ferrari and and J W van Wi
 Date: May 30th, 2022
 
 ## Introduction
-This work is to provide an open-source open-access controller that can be used by the wind energy community.
-The proposed wind farm controller make use of down-regulation to track an active power reference; to balance the thrust forces between the wind turbines in the farm; and to constraint aerodynamic loads in defined turbines.
+This work is to provide an open-source open-access controller that the wind energy community can use.
+The proposed wind farm controller uses down-regulation to track an active power reference; balance the thrust forces between the wind turbines in the farm; and constrain aerodynamic loads in defined turbines.
 The controller is written in MATLAB using the ZeroMQ interface. An example case uses an ADM-R implementation of DTU 10MW turbines and the TotalControl 32-turbine reference wind power plant layout.
 
 ## Using SOWFA and installation
