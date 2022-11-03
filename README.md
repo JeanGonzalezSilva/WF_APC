@@ -1,5 +1,5 @@
 # WF_APC
-Closed-loop wind farm controller (active power tracking / thrust balance / load constraint) object for SOWFA simulations 
+Closed-loop wind farm controller (active power tracking / thrust balancing / load-limiting) object for SOWFA simulations 
 
 Author: J G Silva, D van der Hoek, B M Doekemeijer, R Ferrari and and J W van Wingerden
 
