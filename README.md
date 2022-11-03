@@ -40,7 +40,7 @@ If this controller played a role in your research, please cite either of the fol
 
 J. G. Silva, B. Doekemeijer, R. Ferrari and J. -W. van Wingerden, "Active Power Control of Waked Wind Farms: Compensation of Turbine Saturation and Thrust Force Balance," 2021 European Control Conference (ECC), 2021, pp. 1223-1228, doi: 10.23919/ECC54610.2021.9655154.
 
-J. G. Silva, D. van der Hoek, S.P. Mulders, R. Ferrari and J. -W. van Wingerden, "A Switching Thrust Tracking Controller for Load Constrained Wind Turbines," 2022 American Control Conference (ACC), 2022.
+J. G. Silva, D. van der Hoek, S. P. Mulders, R. Ferrari and J. -W. van Wingerden, "A Switching Thrust Tracking Controller for Load Constrained Wind Turbines," 2022 American Control Conference (ACC), 2022, pp. 4230-4235, doi: 10.23919/ACC53348.2022.9867888.
 
 For LaTeX users:
 ```
@@ -55,14 +55,15 @@ For LaTeX users:
   doi={10.23919/ECC54610.2021.9655154}}
 ```
 ```
-@misc{silva2022switching,
-      title={A Switching Thrust Tracking Controller for Load Constrained Wind Turbines}, 
-      author={Jean Gonzalez Silva and Daan van der Hoek and Sebastiaan Paul Mulders and Riccardo Ferrari and Jan-Willem van Wingerden},
-      year={2022},
-      eprint={2204.05413},
-      archivePrefix={arXiv},
-      primaryClass={eess.SY}
-}
+@INPROCEEDINGS{9867888,
+  author={Silva, Jean Gonzalez and van der Hoek, Daan and Mulders, Sebastiaan Paul and Ferrari, Riccardo and van Wingerden, Jan-Willem},
+  booktitle={2022 American Control Conference (ACC)}, 
+  title={A Switching Thrust Tracking Controller for Load Constrained Wind Turbines}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={4230-4235},
+  doi={10.23919/ACC53348.2022.9867888}}
 ```
 
 ## Acknowledgments 
